@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajat's Meal Plan - High Protein Meal Planner</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbars for kitchen layout simplicity */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #18181b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3f3f46;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #52525b;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen antialiased flex flex-col pb-12">
+
+    <!-- Navigation / Header -->
+    <header class="border-b border-zinc-800 bg-zinc-900/50 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="bg-emerald-500 text-zinc-950 p-2 rounded-xl font-black text-xl tracking-tight flex items-center justify-center shadow-lg shadow-emerald-500/10">
+                    <!-- SVG Weight Scale Icon -->
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-lg font-extrabold tracking-tight text-white flex items-center gap-2">
+                        Rajat's MealPlan <span class="text-xs bg-emerald-500/10 text-emerald-400 font-semibold px-2 py-0.5 rounded-full border border-emerald-500/20">100g Target</span>
+                    </h1>
+                    <p class="text-xs text-zinc-400">7-Day Multi-Meal Planner & Kitchen Assistant</p>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-6 text-sm">
+                <a href="#weekly-view" class="text-emerald-400 hover:text-emerald-300 font-medium transition-colors">Weekly Tracker</a>
+                <a href="#night-prep" class="text-zinc-300 hover:text-white transition-colors">Night-Before Prep</a>
+                <a href="#recipes-section" class="text-zinc-300 hover:text-white transition-colors">Recipe Explorer</a>
+                <a href="#pantry-section" class="text-zinc-300 hover:text-white transition-colors font-medium bg-zinc-800 px-3 py-1.5 rounded-lg border border-zinc-700">Pantry Checklist</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Header / Summary Section -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex-grow w-full space-y-8">
+        <section class="bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800 rounded-3xl p-6 sm:p-8 relative overflow-hidden shadow-2xl">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.08),transparent_45%)]"></div>
+            <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                <div class="space-y-3 max-w-2xl">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Optimal Macro Distribution
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">Your Custom Two-Meal Gym Plan</h2>
+                    <p class="text-zinc-400 text-sm sm:text-base leading-relaxed">
+                        A streamlined eating plan tailored around your 3:30 PM gym window. Leverages standard high-protein staples with direct, high-speed Indian culinary techniques to feed muscle repair without spending hours in the kitchen.
+                    </p>
+                </div>
+                
+                <!-- Macro Snapshot Cards -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full lg:w-auto">
+                    <div class="bg-zinc-900/80 border border-zinc-800 p-4 rounded-2xl flex flex-col justify-between min-w-[120px]">
+                        <span class="text-xs text-zinc-400 block mb-1">Target Protein</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-2xl font-bold text-white">100</span>
+                            <span class="text-xs text-zinc-400">g/day</span>
+                        </div>
+                    </div>
+                    <div class="bg-zinc-900/80 border border-zinc-800 p-4 rounded-2xl flex flex-col justify-between min-w-[120px]">
+                        <span class="text-xs text-zinc-400 block mb-1">Weekly Avg</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-2xl font-bold text-emerald-400">97</span>
+                            <span class="text-xs text-emerald-400">g/day</span>
+                        </div>
+                    </div>
+                    <div class="bg-zinc-900/80 border border-zinc-800 p-4 rounded-2xl col-span-2 sm:col-span-1 flex flex-col justify-between min-w-[120px]">
+                        <span class="text-xs text-zinc-400 block mb-1">Gym Timing</span>
+                        <div>
+                            <span class="text-md font-bold text-white block">3:30 PM</span>
+                            <span class="text-[10px] text-amber-400 bg-amber-500/10 px-1.5 py-0.5 rounded border border-amber-500/20">Pre-Gym Shake 2:30 PM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Section: Weekly Schedule & Prep Engine -->
+        <div id="weekly-view" class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Left Panel: Interactive Day Schedule Card (7 columns) -->
+            <div class="lg:col-span-7 flex flex-col space-y-6">
+                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 flex flex-col h-full shadow-lg">
+                    <div class="flex items-center justify-between border-b border-zinc-800 pb-4 mb-6">
+                        <div class="flex items-center gap-2">
+                            <span class="p-1.5 bg-emerald-500/10 text-emerald-400 rounded-lg">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            </span>
+                            <h3 class="text-lg font-bold text-white">Daily Schedule Tracker</h3>
+                        </div>
+                        <span class="text-xs text-zinc-400">Select any day to view detailed plan</span>
+                    </div>
+
+                    <!-- Weekday Selector Buttons -->
+                    <div class="grid grid-cols-4 sm:grid-cols-7 gap-2 mb-6">
+                        <button onclick="selectDay('monday')" id="btn-monday" class="day-btn py-2.5 px-2 rounded-xl text-xs font-semibold border transition-all duration-200 text-center flex flex-col items-center justify-center gap-1">
+                            <span>Mon</span>
+                            <span class="text-[10px] opacity-75">94g</span>
+                        </button>
+                        <button onclick="selectDay('tuesday')" id="btn-tuesday" class="day-btn py-2.5 px-2 rounded-xl text-xs font-semibold border transition-all duration-200 text-center flex flex-col items-center justify-center gap-1">
+                            <span>Tue</span>
+                            <span class="text-[10px] opacity-75">97g</span>
+                        </button>
+                        <button onclick="selectDay('wednesday')" id="btn-wednesday" class="day-btn py-2.5 px-2 rounded-xl text-xs font-semibold border transition-all duration-200 text-center flex flex-col items-center justify-center gap-1">
+                            <span>Wed</span>
+                            <span class="text-[10px] opacity-75">98g</span>
+                        </button>
+                        <button onclick="selectDay('thursday')" id="btn-thursday" class="day-btn py-2.5 px-2 rounded-xl text-xs font-semibold border transition-all duration-200 text-center flex flex-col items-center justify-center gap-1">
+                            <span>Thu</span>
+                            <span class="text-[10px] opacity-75">99g</span>
+                        </button>
+                        <button onclick="selectDay('friday')" id="btn-friday" class="day-btn py-2.5 px-2 rounded-xl text-xs font-semibold border transition-all duration-200 text-center flex flex-col items-center justify-center gap-1">
+                            <span>Fri</span>
+                            <span class="text-[10px] opacity-75">94g</span>
+                        </button>
+                        <button onclick="selectDay('saturday')" id="btn-saturday" class="day-btn py-2.5 px-2 rounded-xl text-xs font-semibold border transition-all duration-200 text-center flex flex-col items-center justify-center gap-1">
+                            <span>Sat</span>
+                            <span class="text-[10px] opacity-75">103g</span>
+                        </button>
+                        <button onclick="selectDay('sunday')" id="btn-sunday" class="day-btn py-2.5 px-2 rounded-xl text-xs font-semibold border transition-all duration-200 text-center flex flex-col items-center justify-center gap-1 col-span-4 sm:col-span-1">
+                            <span>Sun</span>
+                            <span class="text-[10px] opacity-75">94g</span>
+                        </button>
+                    </div>
+
+                    <!-- Active Day Details Timeline -->
+                    <div id="day-content" class="space-y-6 flex-grow">
+                        <!-- Head of details -->
+                        <div class="flex items-center justify-between bg-zinc-800/40 p-4 rounded-2xl border border-zinc-800">
+                            <div>
+                                <h4 id="active-day-title" class="text-xl font-extrabold text-white capitalize">Monday</h4>
+                                <p class="text-xs text-emerald-400 font-medium">Daily High Protein Run: <span id="active-day-prot-val">94g</span> Protein</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs text-zinc-400 block">Status</span>
+                                <span class="inline-flex items-center gap-1 text-xs bg-emerald-500/10 text-emerald-400 px-2.5 py-0.5 rounded-full border border-emerald-500/20 font-medium">
+                                    Target Met
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Timeline steps -->
+                        <div class="relative pl-6 border-l-2 border-zinc-800 space-y-6 ml-3">
+                            
+                            <!-- Timeline 1: Meal 1 -->
+                            <div class="relative">
+                                <!-- Bullet point -->
+                                <span class="absolute -left-[31px] top-1.5 bg-emerald-500 w-4.5 h-4.5 rounded-full border-4 border-zinc-900 flex items-center justify-center"></span>
+                                <div class="bg-zinc-800/20 border border-zinc-800/80 p-4 rounded-2xl hover:border-zinc-700 transition-all">
+                                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-xs text-zinc-400 font-bold tracking-wider">6:00 AM</span>
+                                            <span class="px-2 py-0.5 bg-emerald-500/10 text-emerald-400 text-[10px] rounded border border-emerald-500/20 uppercase font-semibold">Meal 1 (Breakfast)</span>
+                                        </div>
+                                        <span id="meal1-protein-badge" class="text-xs font-semibold text-zinc-300">~29g Protein</span>
+                                    </div>
+                                    <h5 id="meal1-title" class="text-md font-bold text-white mb-2">Masala Egg Bhurji</h5>
+                                    <p class="text-xs text-zinc-400 mb-3 leading-relaxed">Accompanied by 1 frozen roti (or simple wrap) and 1 warm cup of milk (plain or in coffee) to hit targeted protein structure early.</p>
+                                    <button onclick="viewRecipeByMealId('meal1')" class="inline-flex items-center gap-1 text-xs text-emerald-400 hover:text-emerald-300 font-semibold focus:outline-none transition-all">
+                                        View Cook Guide & Ingredients
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Timeline 2: Gym Session Prep -->
+                            <div class="relative">
+                                <span class="absolute -left-[31px] top-1.5 bg-amber-500 w-4.5 h-4.5 rounded-full border-4 border-zinc-900"></span>
+                                <div class="bg-zinc-800/20 border border-zinc-800/80 p-4 rounded-2xl">
+                                    <div class="flex items-center justify-between gap-2 mb-2">
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-xs text-zinc-400 font-bold tracking-wider">2:30 PM</span>
+                                            <span class="px-2 py-0.5 bg-amber-500/10 text-amber-400 text-[10px] rounded border border-amber-500/20 uppercase font-semibold">Pre-Gym Fuel</span>
+                                        </div>
+                                    </div>
+                                    <h5 class="text-md font-bold text-white mb-1">Pre-Workout "Proffee" / Protein Kick</h5>
+                                    <p class="text-xs text-zinc-400 leading-relaxed">Prepare 1 glass of cold water or warm milk mixed with 1 scoop of your Whey Protein (24g) and a shot of strong coffee. Drink this about 1 hour before training to initiate muscle protection.</p>
+                                </div>
+                            </div>
+
+                            <!-- Timeline 3: Gym session -->
+                            <div class="relative">
+                                <span class="absolute -left-[31px] top-1.5 bg-zinc-700 w-4.5 h-4.5 rounded-full border-4 border-zinc-900"></span>
+                                <div class="bg-zinc-800/20 border border-zinc-800/80 p-4 rounded-2xl flex items-center justify-between">
+                                    <div>
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <span class="text-xs text-zinc-400 font-bold tracking-wider">3:30 PM</span>
+                                            <span class="px-2 py-0.5 bg-zinc-700 text-zinc-300 text-[10px] rounded uppercase font-semibold">Gym Session</span>
+                                        </div>
+                                        <h5 class="text-md font-bold text-white">Strength Training Workout</h5>
+                                    </div>
+                                    <span class="text-xs text-zinc-500 italic">Target: 45-60 min</span>
+                                </div>
+                            </div>
+
+                            <!-- Timeline 4: Post Workout Drink -->
+                            <div class="relative">
+                                <span class="absolute -left-[31px] top-1.5 bg-blue-500 w-4.5 h-4.5 rounded-full border-4 border-zinc-900"></span>
+                                <div class="bg-zinc-800/20 border border-zinc-800/80 p-4 rounded-2xl">
+                                    <div class="flex items-center justify-between gap-2 mb-2">
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-xs text-zinc-400 font-bold tracking-wider">~4:45 PM</span>
+                                            <span class="px-2 py-0.5 bg-blue-500/10 text-blue-400 text-[10px] rounded border border-blue-500/20 uppercase font-semibold">Immediate Post-Workout</span>
+                                        </div>
+                                        <span class="text-xs font-semibold text-blue-400">+24g Protein</span>
+                                    </div>
+                                    <h5 class="text-md font-bold text-white mb-1">Whey Protein Shake</h5>
+                                    <p class="text-xs text-zinc-400 leading-relaxed">1 scoop whey protein mixed with 200-250ml milk or water. Covers protein window instantly while getting showered, saving you from immediate rush to cook.</p>
+                                </div>
+                            </div>
+
+                            <!-- Timeline 5: Meal 2 -->
+                            <div class="relative">
+                                <span class="absolute -left-[31px] top-1.5 bg-emerald-500 w-4.5 h-4.5 rounded-full border-4 border-zinc-900"></span>
+                                <div class="bg-zinc-800/20 border border-zinc-800/80 p-4 rounded-2xl hover:border-zinc-700 transition-all">
+                                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-xs text-zinc-400 font-bold tracking-wider">6:00 PM</span>
+                                            <span class="px-2 py-0.5 bg-emerald-500/10 text-emerald-400 text-[10px] rounded border border-emerald-500/20 uppercase font-semibold">Meal 2 (Dinner)</span>
+                                        </div>
+                                        <span id="meal2-protein-badge" class="text-xs font-semibold text-zinc-300">~65g Protein</span>
+                                    </div>
+                                    <h5 id="meal2-title" class="text-md font-bold text-white mb-2">Garlic Pepper Chicken Stir-Fry</h5>
+                                    <p class="text-xs text-zinc-400 mb-3 leading-relaxed">High protein density meal. Complete with frozen mixed vegetables, warm toasted roti, and clean spices designed to be prepped in under 20 minutes.</p>
+                                    <button onclick="viewRecipeByMealId('meal2')" class="inline-flex items-center gap-1 text-xs text-emerald-400 hover:text-emerald-300 font-semibold focus:outline-none transition-all">
+                                        View Cook Guide & Ingredients
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Night Prep & Pantry Assistant (5 columns) -->
+            <div class="lg:col-span-5 flex flex-col space-y-6">
+                <!-- Night Prep Card -->
+                <div id="night-prep" class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 shadow-lg">
+                    <div class="flex items-center gap-2 border-b border-zinc-800 pb-4 mb-4">
+                        <span class="p-1.5 bg-amber-500/10 text-amber-400 rounded-lg">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-11.314l.707.707m11.314 11.314l.707-.707M4 12a8 8 0 018-8V3"></path></svg>
+                        </span>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">The Night-Before Prep</h3>
+                            <p class="text-xs text-zinc-400">Do these tomorrow night for a fast next day!</p>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic helper stating what tonight's tasks are based on Active Day selection -->
+                    <div class="bg-amber-500/5 border border-amber-500/20 p-4 rounded-2xl mb-4">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs font-bold text-amber-400 uppercase">Preparation Night</span>
+                            <span id="active-prep-night-name" class="text-xs text-zinc-300 font-semibold">Sunday Prep (For Monday)</span>
+                        </div>
+                        <p class="text-xs text-zinc-400 leading-relaxed">
+                            Complete these quick steps tonight to keep tomorrow's breakfast & dinner prep under 15 minutes!
+                        </p>
+                    </div>
+
+                    <!-- Dynamic List of To-Dos -->
+                    <div id="prep-todo-container" class="space-y-3">
+                        <!-- Filled dynamically by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Pantry & Spice Checklist -->
+                <div id="pantry-section" class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 shadow-lg flex-grow">
+                    <div class="flex items-center justify-between border-b border-zinc-800 pb-4 mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="p-1.5 bg-emerald-500/10 text-emerald-400 rounded-lg">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                            </span>
+                            <h3 class="text-lg font-bold text-white">Stock Check & Pantry</h3>
+                        </div>
+                        <button onclick="resetPantryChecklist()" class="text-[10px] text-zinc-500 hover:text-zinc-300 transition-colors underline">Reset Tracker</button>
+                    </div>
+
+                    <!-- Tabs inside checklist container -->
+                    <div class="flex gap-2 mb-4 bg-zinc-950 p-1 rounded-xl">
+                        <button onclick="togglePantryTab('spices')" id="tab-btn-spices" class="pantry-tab-btn flex-1 py-1.5 text-xs font-semibold rounded-lg text-center transition-all">Spices & Base</button>
+                        <button onclick="togglePantryTab('proteins')" id="tab-btn-proteins" class="pantry-tab-btn flex-1 py-1.5 text-xs font-semibold rounded-lg text-center transition-all">Proteins & Carbs</button>
+                    </div>
+
+                    <!-- Spices & Aromatics Content -->
+                    <div id="pantry-spices-content" class="pantry-content space-y-2 max-h-[220px] overflow-y-auto pr-1">
+                        <label class="flex items-center gap-3 p-2 bg-zinc-950/40 rounded-xl border border-zinc-800/60 hover:border-zinc-800 cursor-pointer">
+                            <input type="checkbox" id="chk-onion" onchange="savePantryItem('chk-onion')" class="w-4 h-4 rounded text-emerald-500 focus:ring-emerald-500 bg-zinc-900 border-zinc-700">
+                            <div class="text-xs">
+                                <p class="text-zinc-200 font-semibold">Onions & Tomatoes</p>
+                                <p class="text-[10px] text-zinc-500">Fresh supply for building core bhunas</p>
+                            </div>
+                        </label>
+                        <label class="flex items-center gap-3 p-2 bg-zinc-950/40 rounded-xl border border-zinc-800/60 hover:border-zinc-800 cursor-pointer">
+                            <input type="checkbox" id="chk-ginger-garlic" onchange="savePantryItem('chk-ginger-garlic')" class="w-4 h-4 rounded text-emerald-500 focus:ring-emerald-500 bg-zinc-900 border-zinc-700">
+                            <div class="text-xs">
+                                <p class="text-zinc-200 font-semibold">Ginger-Garlic Paste</p>
+                                <p class="text-[10px] text-zinc-500">Essential flavor base across all menus</p>
+                            </div>
+                        </label>
+                        <label class="flex items-center gap-3 p-2 bg-zinc-950/40 rounded-xl border border-zinc-800/60 hover:border-zinc-800 cursor-pointer">
+                            <input type="checkbox" id="chk-turmeric" onchange="savePantryItem('chk-turmeric')" class="w-4 h-4 rounded text-emerald-500 focus:ring-emerald-500 bg-zinc-900 border-zinc-700">
+                            <div class="text-xs">
+                                <p class="text-zinc-200 font-semibold">Turmeric & Red Chilli Powder</p>
+                                <p class="text-[10px] text-zinc-500">The primary golden colors and standard kick</p>
+                            </div>
+                        </label>
+                        <label class="flex items-center gap-3 p-2 bg-zinc-950/40 rounded-xl border border-zinc-800/60 hover:border-zinc-800 cursor-pointer">
+                            <input type="checkbox" id="chk-coriander-seeds" onchange="savePantryItem('chk-coriander-seeds')" class="w-4 h-4 rounded text-emerald-500 focus:ring-emerald-500 bg-zinc-900 border-zinc-700">
+                            <div class="text-xs">
+                                <p class="text-zinc-200 font-semibold">Cumin & Coriander Powder</p>
+                                <p class="text-[10px] text-zinc-500">Ground savory spices</p>
+                            </div>
+                        </label>
+                        <label class="flex items-center gap-3 p-2 bg-zinc-950/40 rounded-xl border border-zinc-800/60 hover:border-zinc-800 cursor-pointer">
+                            <input type="checkbox" id="chk-garam-masala" onchange="savePantryItem('chk-garam-masala')" class="w-4 h-4 rounded text-emerald-500 focus:ring-emerald-500 bg-zinc-900 border-zinc-700">
+                            <div class="text-xs">
+                                <p class="text-zinc-200 font-semibold">Garam Masala & Ghee/Oil</p>
+                                <p class="text-[10px] text-zinc-500">For rich tempering finish</p>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Proteins & Staples Content -->
+                    <div id="pantry-proteins-content" class="pantry-content space-y-2 hidden max-h-[220px] overflow-y-auto pr-1">
+                        <label class="flex items-center gap-3 p-2 bg-zinc-950/40 rounded-xl border border-zinc-800/60 hover:border-zinc-800 cursor-pointer">
+                            <input type="checkbox" id="chk-chicken" onchange="savePantryItem('chk-chicken')" class="w-4 h-4 rounded text-emerald-500 focus:ring-emerald-500 bg-zinc-900 border-zinc-700">
+                            <div class="text-xs">
+                                <p class="text-zinc-200 font-semibold">Boneless Chicken Breast</p>
+                                <p class="text-[10px] text-zinc-500">Diced and stored in portions (~150g)</p>
+                            </div>
+                        </label>
+                        <label class="flex items-center gap-3 p-2 bg-zinc-950/40 rounded-xl border border-zinc-800/60 hover:border-zinc-800 cursor-pointer">
+                            <input type="checkbox" id="chk-tilapia" onchange="savePantryItem('chk-tilapia')" class="w-4 h-4 rounded text-emerald-500 focus:ring-emerald-500 bg-zinc-900 border-zinc-700">
+                            <div class="text-xs">
+                                <p class="text-zinc-200 font-semibold">Tilapia Fillets</p>
+                                <p class="text-[10px] text-zinc-500">Keep standard white fish fillets handy</p>
+                            </div>
+                        </label>
+                        <label class="flex items-center gap-3 p-2 bg-zinc-950/40 rounded-xl border border-zinc-800/60 hover:border-zinc-800 cursor-pointer">
+                            <input type="checkbox" id="chk-eggs" onchange="savePantryItem('chk-eggs')" class="w-4 h-4 rounded text-emerald-500 focus:ring-emerald-500 bg-zinc-900 border-zinc-700">
+                            <div class="text-xs">
+                                <p class="text-zinc-200 font-semibold">Fresh Eggs</p>
+                                <p class="text-[10px] text-zinc-500">Fast morning breakfasts</p>
+                            </div>
+                        </label>
+                        <label class="flex items-center gap-3 p-2 bg-zinc-950/40 rounded-xl border border-zinc-800/60 hover:border-zinc-800 cursor-pointer">
+                            <input type="checkbox" id="chk-soya" onchange="savePantryItem('chk-soya')" class="w-4 h-4 rounded text-emerald-500 focus:ring-emerald-500 bg-zinc-900 border-zinc-700">
+                            <div class="text-xs">
+                                <p class="text-zinc-200 font-semibold">Soya Chunks & Edamame</p>
+                                <p class="text-[10px] text-zinc-500">High volume vegetarian protein supplements</p>
+                            </div>
+                        </label>
+                        <label class="flex items-center gap-3 p-2 bg-zinc-950/40 rounded-xl border border-zinc-800/60 hover:border-zinc-800 cursor-pointer">
+                            <input type="checkbox" id="chk-pulses" onchange="savePantryItem('chk-pulses')" class="w-4 h-4 rounded text-emerald-500 focus:ring-emerald-500 bg-zinc-900 border-zinc-700">
+                            <div class="text-xs">
+                                <p class="text-zinc-200 font-semibold">Kidney Beans & Split Chickpeas</p>
+                                <p class="text-[10px] text-zinc-500">Rajma and Chana Dal</p>
+                            </div>
+                        </label>
+                        <label class="flex items-center gap-3 p-2 bg-zinc-950/40 rounded-xl border border-zinc-800/60 hover:border-zinc-800 cursor-pointer">
+                            <input type="checkbox" id="chk-roti" onchange="savePantryItem('chk-roti')" class="w-4 h-4 rounded text-emerald-500 focus:ring-emerald-500 bg-zinc-900 border-zinc-700">
+                            <div class="text-xs">
+                                <p class="text-zinc-200 font-semibold">Frozen Roti & Milk</p>
+                                <p class="text-[10px] text-zinc-500">Daily calorie and carbohydrate structure</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: Interactive Recipe Explorer -->
+        <section id="recipes-section" class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-8 shadow-xl">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-800 pb-6 mb-8">
+                <div>
+                    <h3 class="text-2xl font-extrabold text-white flex items-center gap-2">
+                        <span class="p-1.5 bg-emerald-500/10 text-emerald-400 rounded-lg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        </span>
+                        Recipe Cooking Manual
+                    </h3>
+                    <p class="text-xs text-zinc-400 mt-1">High-flavor, low-hassle instructions with dynamic portion breakdowns</p>
+                </div>
+                
+                <!-- Category Selectors -->
+                <div class="flex gap-2 p-1 bg-zinc-950 rounded-xl self-start sm:self-center">
+                    <button onclick="filterRecipes('all')" id="recipe-filter-all" class="recipe-tab-btn px-4 py-2 text-xs font-semibold rounded-lg transition-all">All Recipes</button>
+                    <button onclick="filterRecipes('breakfast')" id="recipe-filter-breakfast" class="recipe-tab-btn px-4 py-2 text-xs font-semibold rounded-lg transition-all">Breakfasts</button>
+                    <button onclick="filterRecipes('dinner')" id="recipe-filter-dinner" class="recipe-tab-btn px-4 py-2 text-xs font-semibold rounded-lg transition-all">Dinners</button>
+                </div>
+            </div>
+
+            <!-- Recipe Grid Layout -->
+            <div id="recipe-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Recipes populated by JS inside structural elements -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Fullscreen/Centered Recipe Details Dialog -->
+    <div id="recipe-modal" class="fixed inset-0 bg-zinc-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl relative">
+            
+            <!-- Modal Header -->
+            <div class="p-6 border-b border-zinc-800 flex items-start justify-between">
+                <div>
+                    <span id="modal-recipe-cat" class="px-2 py-0.5 bg-emerald-500/10 text-emerald-400 text-[10px] rounded border border-emerald-500/20 uppercase font-bold">Breakfast</span>
+                    <h4 id="modal-recipe-title" class="text-2xl font-black text-white mt-1">Masala Egg Bhurji</h4>
+                    <p id="modal-recipe-protein" class="text-xs text-emerald-400 font-semibold mt-0.5">~29g Protein | 8 mins</p>
+                </div>
+                <button onclick="closeRecipeModal()" class="p-1 text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-800 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <!-- Modal Content (Scrollable) -->
+            <div class="p-6 overflow-y-auto space-y-6">
+                <!-- Ingredients Section -->
+                <div>
+                    <h5 class="text-sm font-bold text-zinc-300 uppercase tracking-wider mb-3">Kitchen Ingredients Needed</h5>
+                    <ul id="modal-recipe-ingredients" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                        <!-- Populated by JS -->
+                    </ul>
+                </div>
+
+                <!-- Step-by-Step cooking methods -->
+                <div>
+                    <h5 class="text-sm font-bold text-zinc-300 uppercase tracking-wider mb-3">Step-by-Step Cooking Steps</h5>
+                    <ol id="modal-recipe-steps" class="space-y-3 text-xs text-zinc-400 list-decimal pl-4">
+                        <!-- Populated by JS -->
+                    </ol>
+                </div>
+
+                <!-- Expert Cooking Tip Box -->
+                <div class="bg-amber-500/5 border border-amber-500/20 p-4 rounded-2xl flex gap-3">
+                    <span class="text-amber-400 shrink-0 text-lg">💡</span>
+                    <div>
+                        <span class="text-xs font-bold text-amber-400 block mb-0.5">Expert Tip for Better Taste</span>
+                        <p id="modal-recipe-tip" class="text-xs text-zinc-400 leading-relaxed">Let the residual heat cook it.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-4 border-t border-zinc-800 bg-zinc-950/40 flex justify-end">
+                <button onclick="closeRecipeModal()" class="px-5 py-2 bg-zinc-800 hover:bg-zinc-700 text-white rounded-xl text-xs font-bold transition-colors">Close Cooking Guide</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Copyright -->
+    <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 text-center text-xs text-zinc-600 border-t border-zinc-900 pt-8">
+        <p>&copy; 2026 GainsKitchen Multi-Meal Assistant. Designed for fast preparation & optimized physical fitness recovery.</p>
+    </footer>
+
+    <script>
+        // Data Structures for the App Recipes
+        const recipes = {
+            // Breakfast Recipes
+            "masala-egg-bhurji": {
+                id: "masala-egg-bhurji",
+                category: "breakfast",
+                title: "Masala Egg Bhurji",
+                protein: "~29g",
+                time: "8 min",
+                ingredients: [
+                    "3 Large Eggs (whisked)",
+                    "1/4 cup Onion (finely chopped)",
+                    "2 tbsp Tomato (finely chopped)",
+                    "1/2 tsp Ginger-Garlic paste",
+                    "1/4 tsp Turmeric Powder (haldi)",
+                    "1/2 tsp Red Chilli Powder",
+                    "A pinch of Garam Masala",
+                    "1 tsp Cooking Oil or Butter",
+                    "Salt to taste & Fresh Coriander",
+                    "Serve with: 1 toasted Roti & 1 Cup Milk"
+                ],
+                steps: [
+                    "Whisk eggs with a tiny splash of milk or water for maximum fluffiness; set aside.",
+                    "Heat 1 tsp oil/butter in a pan. Sauté onions for 2 minutes until they turn soft.",
+                    "Stir in the ginger-garlic paste and cook for 30 seconds until fragrant.",
+                    "Add chopped tomatoes, turmeric, red chilli powder, and salt. Cook for 2-3 minutes until tomatoes soften down completely.",
+                    "Lower the heat to medium-low, pour in the whisked eggs, and stir continuously until just softly set.",
+                    "Pull the pan off the burner slightly early—the residual heat will finish the scramble and prevent dry, rubbery eggs.",
+                    "Toss in garam masala, sprinkle fresh chopped coriander, and fold together. Serve alongside toasted frozen roti and your morning milk or coffee."
+                ],
+                tip: "The entire secret to fluffy egg bhurji is medium-low heat and removing the pan from direct heat right before the eggs look completely dry."
+            },
+            "soya-chunks-bhurji": {
+                id: "soya-chunks-bhurji",
+                category: "breakfast",
+                title: "Soya Chunks Bhurji",
+                protein: "~37g",
+                time: "12 min",
+                ingredients: [
+                    "40g (~1/2 cup) Dry Soya Chunks",
+                    "1/4 cup Onion (finely chopped)",
+                    "2 tbsp Tomato (chopped)",
+                    "1/2 tsp Ginger-Garlic paste",
+                    "1/4 tsp Turmeric Powder",
+                    "1/2 tsp Red Chilli Powder",
+                    "1/4 tsp Coriander Powder",
+                    "A pinch of Garam Masala",
+                    "1 tsp Cooking Oil, salt",
+                    "Serve with: 1 fried or boiled Egg, 1 toasted Roti, 1 Cup Milk"
+                ],
+                steps: [
+                    "Soak soya chunks in boiling water for 8-10 minutes until completely puffed up and soft.",
+                    "Drain and let them cool for a minute. Squeeze out every drop of water vigorously with your hands, then pulse them in a food processor or mince them finely on a cutting board.",
+                    "Heat 1 tsp oil in a pan, sauté onion for 2-3 minutes until light gold, then stir in ginger-garlic paste for 30 seconds.",
+                    "Add the chopped tomatoes, turmeric, chilli powder, coriander powder, and salt. Sauté until tomatoes break down into a paste.",
+                    "Add the soya mince. Mix well to combine, letting it absorb the pan juices. Cook for 4-5 minutes until it resembles dry, golden keema.",
+                    "Garnish with coriander. Serve alongside a simple boiled or fried egg, a warm toasted roti, and your milk."
+                ],
+                tip: "Squeezing out the water properly is the difference between an incredibly rich, flavor-packed bhurji and something soggy and bland. Wring them out like a sponge!"
+            },
+            "masala-veggie-omelette": {
+                id: "masala-veggie-omelette",
+                category: "breakfast",
+                title: "Masala Veggie Omelette",
+                protein: "~29g",
+                time: "8 min",
+                ingredients: [
+                    "3 Large Eggs",
+                    "1/4 cup Frozen Mixed Veggies (defrosted)",
+                    "2 tbsp Onion (finely chopped)",
+                    "A pinch of Turmeric Powder",
+                    "Salt & Fresh Ground Black Pepper",
+                    "1 tsp Cooking Oil or Ghee",
+                    "Serve with: 1 toasted Roti & 1 Cup Milk"
+                ],
+                steps: [
+                    "Microwave your frozen mixed veggies with a tablespoon of water for 1 minute to thaw them. Drain any excess water completely.",
+                    "In a bowl, crack eggs and whisk vigorously with salt, black pepper, and turmeric.",
+                    "Fold the defrosted mixed veggies and raw chopped onions straight into the egg mixture.",
+                    "Heat 1 tsp oil/ghee in a non-stick frying pan over medium-high heat. Pour the egg-veggie mixture, spreading it evenly.",
+                    "Cover the pan with a lid, turn heat down to medium, and cook for 3-4 minutes until the bottom is beautifully golden and the top looks almost set.",
+                    "Fold the omelette carefully in half, cook for another 1-2 minutes to lock the middle, then slide onto a plate. Serve with hot roti."
+                ],
+                tip: "Always thaw and drain your frozen mixed veggies in the microwave before adding them to the egg. It stops them from releasing excess water which ruins the omelette's texture."
+            },
+            "edamame-egg-scramble": {
+                id: "edamame-egg-scramble",
+                category: "breakfast",
+                title: "Edamame Egg Scramble",
+                protein: "~34g",
+                time: "8 min",
+                ingredients: [
+                    "2 Large Eggs",
+                    "100g (~3/4 cup) Frozen Shelled Edamame",
+                    "2 tbsp Onion (finely chopped)",
+                    "1/4 tsp Cumin Powder",
+                    "A pinch of dry Chilli Flakes",
+                    "Salt, pepper & 1 tsp Cooking Oil",
+                    "A squeeze of fresh Lemon juice",
+                    "Serve with: 1 toasted Roti & 1 Cup Milk"
+                ],
+                steps: [
+                    "Microwave or boil the frozen edamame beans in water for 3-4 minutes until tender, then drain.",
+                    "Heat 1 tsp oil in your pan, sauté onions for 1-2 minutes until soft, then drop in the cooked edamame.",
+                    "Season the pan with cumin powder, chilli flakes, salt, and pepper. Toss and sauté for 1-2 minutes until edamame begins to brown slightly.",
+                    "Push the edamame mixture to one side of the pan. Crack the eggs onto the empty side, scramble them until soft, then combine everything together.",
+                    "Remove from the heat and finish with a fresh squeeze of lemon juice. Serve hot with roti."
+                ],
+                tip: "Do not skip the lemon juice squeeze at the very end! Edamame beans are nutritionally dense but taste slightly flat; that splash of fresh acidity completely wakes up the flavor profile."
+            },
+
+            // Dinner Recipes
+            "garlic-pepper-chicken": {
+                id: "garlic-pepper-chicken",
+                category: "dinner",
+                title: "Garlic Pepper Chicken Stir-Fry",
+                protein: "~65g",
+                time: "15 min",
+                ingredients: [
+                    "150g Chicken Breast (sliced into thin strips)",
+                    "1/2 cup Frozen Mixed Veggies",
+                    "1 tbsp Onion (finely chopped)",
+                    "1 tsp Ginger-Garlic paste",
+                    "1/2 tsp Black Pepper (coarse ground)",
+                    "A pinch of dry Chilli Flakes",
+                    "Salt to taste & 1 tsp Cooking Oil",
+                    "Serve with: 2 toasted Rotis & Whey Shake (post-gym)"
+                ],
+                steps: [
+                    "If time allows, toss the thin chicken strips in ginger-garlic paste, salt, and half the black pepper for 10-15 minutes (or overnight in the fridge).",
+                    "Heat 1 tsp oil in a heavy pan on medium-high. Lay the chicken strips out across the pan and let them sit undisturbed for 1-2 minutes to form a brown sear.",
+                    "Stir-fry the chicken for 4-5 minutes until cooked through.",
+                    "Toss in the onions, cook for 1 minute, then add the frozen mixed veggies straight from the freezer.",
+                    "Cook on high heat for 3-4 minutes until the veggies are tender-crisp and all excess pan moisture has completely evaporated.",
+                    "Stir in the rest of the black pepper and chilli flakes. Sauté on high for 1 final minute to crisp up the edges. Serve hot with two rotis."
+                ],
+                tip: "Resist the urge to continuously move the chicken when you first drop it in! Leaving it alone for 2 minutes guarantees a deep golden crust rather than a gray, boiled look."
+            },
+            "tilapia-curry": {
+                id: "tilapia-curry",
+                category: "dinner",
+                title: "Traditional Tilapia Curry",
+                protein: "~60g",
+                time: "18 min",
+                ingredients: [
+                    "150g Tilapia Fillet (cut into 2-3 clean chunks)",
+                    "1/4 cup Onion (finely chopped)",
+                    "1/4 cup Tomato (chopped)",
+                    "1 tsp Ginger-Garlic paste",
+                    "1/4 tsp Turmeric Powder",
+                    "1/2 tsp Red Chilli Powder",
+                    "1/2 tsp Coriander Powder",
+                    "Salt to taste & 1 tsp Cooking Oil",
+                    "Water & Fresh Coriander",
+                    "Serve with: 2 toasted Rotis & Whey Shake (post-gym)"
+                ],
+                steps: [
+                    "Heat 1 tsp oil in your pan, sauté onions until deep golden brown (about 3-4 minutes).",
+                    "Stir in ginger-garlic paste and cook for 30 seconds until the raw aroma disappears.",
+                    "Add chopped tomatoes, turmeric, red chilli, coriander powder, and salt. Mash down the tomatoes with your spatula for 3-4 minutes to form a thick, bubbling masala base.",
+                    "Pour in 1/2 cup of warm water and bring the gravy to a slow, gentle simmer.",
+                    "Slide the tilapia chunks gently into the curry. Cover with a lid and let cook on medium-low for 6-8 minutes. (Do not stir hard or the delicate fish will break—just gently swirl the pan).",
+                    "Once fish is opaque and flakes easily with a fork, it's finished. Garnish with coriander and serve with roti."
+                ],
+                tip: "Tilapia cooks exceptionally fast. The moment the fish easily flakes with a fork, turn off your stove. Keeping it on longer turns delicate fish rubbery and dry."
+            },
+            "rajma-masala": {
+                id: "rajma-masala",
+                category: "dinner",
+                title: "Rajma Masala (Kidney Beans Curry)",
+                protein: "~69g",
+                time: "20 min (day-of)",
+                ingredients: [
+                    "100g (~1/2 cup) Dry Kidney Beans (soaked & pressure cooked)",
+                    "1/4 cup Onion (finely chopped)",
+                    "1/4 cup Tomato (chopped)",
+                    "1 tsp Ginger-Garlic paste",
+                    "1/4 tsp Turmeric Powder",
+                    "1/2 tsp Red Chilli Powder",
+                    "1/2 tsp Cumin Powder",
+                    "1/2 tsp Garam Masala",
+                    "Salt to taste & 1 tsp Ghee or Cooking Oil",
+                    "2 Boiled Eggs (halved, for serving topping)",
+                    "Fresh Coriander",
+                    "Serve with: 3 toasted Rotis & Whey Shake (post-gym)"
+                ],
+                steps: [
+                    "Ensure your kidney beans have been soaked overnight (8+ hours) and pressure-cooked until completely soft and creamy to the touch.",
+                    "Heat 1 tsp ghee/oil in your cooking pot. Sauté onions for 4-5 minutes until they turn a deep golden brown—take your time here to develop the classic sweet base.",
+                    "Add ginger-garlic paste for 30 seconds, then add tomatoes, turmeric, chilli powder, cumin, and salt. Sauté for 4 minutes until a unified paste forms.",
+                    "Add the cooked kidney beans along with a splash of their starchy cooking water.",
+                    "Bring to a boil, then mash a small handful of beans against the side of the pot with your ladle—this thickens the gravy beautifully and naturally.",
+                    "Stir in the garam masala and simmer on low for 8-10 minutes. Top with halved boiled eggs and fresh coriander. Serve with 3 toasted rotis."
+                ],
+                tip: "Always boil kidney beans completely soft. They contain high concentrations of phytohemagglutinin, which can cause digestive issues unless broken down by boiling temperature."
+            },
+            "chana-dal-tadka": {
+                id: "chana-dal-tadka",
+                category: "dinner",
+                title: "Chana Dal Tadka (Split Chickpea Dal)",
+                protein: "~65g",
+                time: "15 min (day-of)",
+                ingredients: [
+                    "100g (~1/2 cup) Dry Split Chickpeas (soaked & pressure cooked)",
+                    "1/4 tsp Turmeric Powder & Salt",
+                    "1 tsp Ghee or Butter (for tempering)",
+                    "1/2 tsp Cumin Seeds",
+                    "1 Fresh Garlic clove (sliced)",
+                    "1 Dried Red Chilli",
+                    "1 tbsp Onion & 1/4 cup Tomato (chopped)",
+                    "2 Eggs (boiled or fried, to serve)",
+                    "Fresh Coriander",
+                    "Serve with: 3 toasted Rotis & Whey Shake (post-gym)"
+                ],
+                steps: [
+                    "Pressure-cook your soaked split chickpeas with turmeric, salt, and water (about 1.5 times volume of dal) for 10-12 minutes until soft and creamy, but keeping structural shape.",
+                    "In a separate small tadka pan, heat 1 tsp ghee/oil. Add cumin seeds and let them sizzle. Drop in the sliced garlic and dried red chilli. Fry until the garlic starts to turn slightly golden.",
+                    "Add the chopped onions and tomatoes to the tempering, frying for 2-3 minutes until soft and fragrant.",
+                    "Pour this sizzling aromatic tempering straight into the pot of cooked dal. Stir together gently, cooking on low for 2-3 minutes.",
+                    "Garnish with coriander. Serve with two eggs on the side and toasted roti."
+                ],
+                tip: "The key to restaurant-style dal is getting the garlic in the tempering to sizzle and turn a light brown before pouring it into the dal. It releases an incredible smoky flavor!"
+            },
+            "lemon-garlic-tilapia": {
+                id: "lemon-garlic-tilapia",
+                category: "dinner",
+                title: "Lemon-Garlic Tilapia with Edamame Sauté",
+                protein: "~66g",
+                time: "15 min",
+                ingredients: [
+                    "150g Tilapia Fillet",
+                    "1/2 tsp Ginger-Garlic paste",
+                    "Juice of 1/2 Lemon",
+                    "1/4 tsp Turmeric Powder",
+                    "1/4 tsp Red Chilli Powder",
+                    "Salt, pepper & 1.5 tsp Cooking Oil",
+                    "For side: 50g (~1/3 cup) Frozen Edamame & 1/4 cup Frozen Mixed Veggies",
+                    "1 Garlic clove (finely chopped for sauté)",
+                    "Serve with: 2 toasted Rotis & Whey Shake (post-gym)"
+                ],
+                steps: [
+                    "Pat the tilapia fillet completely dry using a paper towel. Rub both sides with ginger-garlic paste, turmeric, chilli powder, salt, pepper, and half the lemon juice. Let rest for 10 minutes.",
+                    "Heat 1 tsp oil in a non-stick skillet on medium-high heat. Lay the seasoned fillet down and cook undisturbed for 2-3 minutes until golden-brown, then flip and cook for 2-3 minutes more. Drizzle remaining lemon juice on top.",
+                    "In a second small pan, heat 1/2 tsp oil. Sauté the chopped garlic for 20 seconds, then toss in the edamame and mixed vegetables straight from frozen.",
+                    "Stir-fry the vegetables on high heat for 4-5 minutes until they are soft, fully cooked, and carry a slight char. Season with salt and pepper.",
+                    "Serve the seared tilapia fillet alongside the colorful edamame-veggie mix and warm rotis."
+                ],
+                tip: "Make sure to pat the fish completely dry before applying spices! Excess surface moisture acts like steam when frying, which ruins your chances of getting a crispy, seasoned crust."
+            },
+            "soya-chunks-masala": {
+                id: "soya-chunks-masala",
+                category: "dinner",
+                title: "Soya Chunks Masala Curry",
+                protein: "~65g",
+                time: "16 min",
+                ingredients: [
+                    "70g (~3/4 cup) Dry Soya Chunks",
+                    "1/4 cup Onion (finely chopped)",
+                    "1/4 cup Tomato (chopped)",
+                    "1 tsp Ginger-Garlic paste",
+                    "1/4 tsp Turmeric Powder",
+                    "1/2 tsp Red Chilli Powder",
+                    "1/2 tsp Coriander Powder",
+                    "1/4 tsp Garam Masala",
+                    "Salt & 1 tsp Cooking Oil",
+                    "Water & Fresh Coriander",
+                    "Serve with: 2 toasted Rotis & Whey Shake (post-gym)"
+                ],
+                steps: [
+                    "Boil soya chunks in salted hot water for 8-10 minutes until they double in size. Strain, let them cool, and press them flat between your palms to squeeze out every drop of water.",
+                    "Heat 1 tsp oil in your pan, sauté onions until they turn golden brown (3-4 minutes). Add ginger-garlic paste and cook for 30 seconds.",
+                    "Stir in tomatoes, turmeric, chilli powder, coriander powder, and salt. Cook for 3-4 minutes until the tomatoes form a thick, unified masala paste.",
+                    "Add the squeezed soya chunks. Sauté them for 2 minutes to thoroughly coat them in the masala.",
+                    "Pour in 1/2 cup of warm water, cover with a lid, and let simmer on low for 6-8 minutes so the chunks expand with the gravy.",
+                    "Stir in the garam masala and sprinkle fresh chopped coriander. Serve hot with roti."
+                ],
+                tip: "Unlike the morning scramble version of soya chunks, let these chunks simmer a few minutes longer in the gravy to allow the rich spices to penetrate deeply to the core."
+            }
+        };
+
+        // Weekly mapping with protein specifications and active recipes
+        const weeklyPlan = {
+            "monday": {
+                name: "Monday",
+                proteinVal: "94g",
+                meal1Id: "masala-egg-bhurji",
+                meal2Id: "garlic-pepper-chicken",
+                prepTasks: [
+                    { text: "Thaw 150g boneless chicken breast in the fridge overnight.", key: "t1" },
+                    { text: "Marinate chicken with ginger-garlic paste, salt, pepper, and a squeeze of lemon.", key: "t2" },
+                    { text: "Chop half an onion and a tomato for tomorrow's scramble.", key: "t3" }
+                ],
+                prepNightName: "Sunday Night Prep (For Monday)"
+            },
+            "tuesday": {
+                name: "Tuesday",
+                proteinVal: "97g",
+                meal1Id: "soya-chunks-bhurji",
+                meal2Id: "tilapia-curry",
+                prepTasks: [
+                    { text: "Move one Tilapia Fillet (~150g) from the freezer to the fridge to slow-thaw overnight.", key: "t4" },
+                    { text: "Double-check that you have enough ginger-garlic paste ready in the fridge.", key: "t5" },
+                    { text: "Boil 40g dry soya chunks, squeeze dry, mince them up, and store airtight for tomorrow morning.", key: "t6" }
+                ],
+                prepNightName: "Monday Night Prep (For Tuesday)"
+            },
+            "wednesday": {
+                name: "Wednesday",
+                proteinVal: "98g",
+                meal1Id: "masala-veggie-omelette",
+                meal2Id: "rajma-masala",
+                prepTasks: [
+                    { text: "Soak 100g (~1/2 cup) dry kidney beans in a bowl of water (essential step - soak 8+ hours).", key: "t7" },
+                    { text: "Boil 2 eggs, let them cool, peel them, and refrigerate to use as tomorrow's dinner topping.", key: "t8" },
+                    { text: "Chop onions and tomatoes to replenish your prep box.", key: "t9" }
+                ],
+                prepNightName: "Tuesday Night Prep (For Wednesday)"
+            },
+            "thursday": {
+                name: "Thursday",
+                proteinVal: "99g",
+                meal1Id: "edamame-egg-scramble",
+                meal2Id: "garlic-pepper-chicken",
+                prepTasks: [
+                    { text: "Thaw and marinate 150g boneless chicken breast with ginger-garlic, salt, and pepper.", key: "t10" },
+                    { text: "Prepare 100g of frozen shelled edamame in a bowl so it's ready for morning scrambling.", key: "t11" }
+                ],
+                prepNightName: "Wednesday Night Prep (For Thursday)"
+            },
+            "friday": {
+                name: "Friday",
+                proteinVal: "94g",
+                meal1Id: "masala-egg-bhurji",
+                meal2Id: "chana-dal-tadka",
+                prepTasks: [
+                    { text: "Soak 100g (~1/2 cup) dry split chickpeas (chana dal) in a bowl of water overnight.", key: "t12" },
+                    { text: "Boil 2 eggs and store them in the fridge to serve alongside your Friday night dal.", key: "t13" },
+                    { text: "Mince or prepare some extra fresh garlic cloves for Friday's sizzle tempering.", key: "t14" }
+                ],
+                prepNightName: "Thursday Night Prep (For Friday)"
+            },
+            "saturday": {
+                name: "Saturday",
+                proteinVal: "103g",
+                meal1Id: "soya-chunks-bhurji",
+                meal2Id: "lemon-garlic-tilapia",
+                prepTasks: [
+                    { text: "Move the second Tilapia Fillet (~150g) to the fridge to thaw overnight.", key: "t15" },
+                    { text: "Marinate the tilapia fillet directly in lemon juice, ginger-garlic paste, turmeric, salt, and pepper for an intense finish.", key: "t16" },
+                    { text: "Prep soya chunks (boil, squeeze dry, and mince) to accelerate Saturday's breakfast.", key: "t17" }
+                ],
+                prepNightName: "Friday Night Prep (For Saturday)"
+            },
+            "sunday": {
+                name: "Sunday",
+                proteinVal: "94g",
+                meal1Id: "masala-veggie-omelette",
+                meal2Id: "soya-chunks-masala",
+                prepTasks: [
+                    { text: "Ensure soya chunks are available (no overnight soak required, a 10-minute breakfast boil is fine!).", key: "t18" },
+                    { text: "Replenish your supply of frozen rotis and milk for the upcoming week.", key: "t19" },
+                    { text: "Wash and dry any reusable airtight containers to stay organized for next week.", key: "t20" }
+                ],
+                prepNightName: "Saturday Night Prep (For Sunday)"
+            }
+        };
+
+        // Global State variables
+        let activeDay = 'monday';
+        let activePantryTab = 'spices';
+
+        // Initialize App on window load
+        window.onload = function() {
+            // Load saved pantry values from localStorage
+            loadPantryState();
+            // Render default Day view (Monday)
+            selectDay('monday');
+            // Populate all recipes in the grid list
+            renderAllRecipes();
+            // Default active category tab highlights
+            filterRecipes('all');
+            togglePantryTab('spices');
+        };
+
+        // Handler for choosing a day of the week
+        function selectDay(dayKey) {
+            activeDay = dayKey;
+            const data = weeklyPlan[dayKey];
+
+            // Update UI Button active styles
+            document.querySelectorAll('.day-btn').forEach(btn => {
+                btn.classList.remove('bg-emerald-500', 'text-zinc-950', 'border-emerald-500', 'shadow-lg', 'shadow-emerald-500/10');
+                btn.classList.add('bg-zinc-900', 'text-zinc-300', 'border-zinc-800', 'hover:border-zinc-700');
+            });
+
+            const activeBtn = document.getElementById(`btn-${dayKey}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-zinc-900', 'text-zinc-300', 'border-zinc-800', 'hover:border-zinc-700');
+                activeBtn.classList.add('bg-emerald-500', 'text-zinc-950', 'border-emerald-500', 'shadow-lg', 'shadow-emerald-500/10');
+            }
+
+            // Update Day details card content
+            document.getElementById('active-day-title').innerText = data.name;
+            document.getElementById('active-day-prot-val').innerText = data.proteinVal;
+
+            // Fetch dynamic meals associated
+            const m1Data = recipes[data.meal1Id];
+            const m2Data = recipes[data.meal2Id];
+
+            document.getElementById('meal1-title').innerText = m1Data.title;
+            document.getElementById('meal1-protein-badge').innerText = `${m1Data.protein} Protein (${m1Data.time})`;
+            document.getElementById('meal1-title').parentElement.querySelector('p').innerText = `Protein-packed breakfast optimized for starting the day strong. Accompanied by 1 toasted frozen roti and 1 warm cup of nutritious milk (in coffee/tea).`;
+            // Save identifiers into click triggers
+            document.getElementById('meal1-title').nextElementSibling.nextElementSibling.setAttribute('onclick', `viewRecipe('${data.meal1Id}')`);
+
+            document.getElementById('meal2-title').innerText = m2Data.title;
+            document.getElementById('meal2-protein-badge').innerText = `${m2Data.protein} Protein (${m2Data.time})`;
+            document.getElementById('meal2-title').parentElement.querySelector('p').innerText = `Rich post-gym dinner designed to support active recovery. Complete with frozen vegetables, toasted rotis, and high-absorption proteins cooked fast.`;
+            document.getElementById('meal2-title').nextElementSibling.nextElementSibling.setAttribute('onclick', `viewRecipe('${data.meal2Id}')`);
+
+            // Update Night Prep dynamic content
+            document.getElementById('active-prep-night-name').innerText = data.prepNightName;
+            renderPrepTasks(data.prepTasks);
+        }
+
+        // Render Prep Tasks
+        function renderPrepTasks(tasks) {
+            const container = document.getElementById('prep-todo-container');
+            container.innerHTML = '';
+
+            tasks.forEach((task, index) => {
+                const isChecked = localStorage.getItem(`prep-${task.key}`) === 'true';
+                
+                const taskDiv = document.createElement('div');
+                taskDiv.className = `flex items-start gap-3 p-3 rounded-xl border transition-all duration-150 ${isChecked ? 'bg-zinc-950/20 border-zinc-900 opacity-60' : 'bg-zinc-900 border-zinc-800 hover:border-zinc-700'}`;
+                
+                taskDiv.innerHTML = `
+                    <input type="checkbox" id="prep-item-${task.key}" ${isChecked ? 'checked' : ''} 
+                        onchange="togglePrepTask('${task.key}')" 
+                        class="w-4.5 h-4.5 mt-0.5 rounded text-amber-500 focus:ring-amber-500 bg-zinc-950 border-zinc-700 cursor-pointer">
+                    <div class="text-xs flex-1 cursor-pointer" onclick="document.getElementById('prep-item-${task.key}').click()">
+                        <p class="${isChecked ? 'line-through text-zinc-500' : 'text-zinc-200'} leading-relaxed">${task.text}</p>
+                    </div>
+                `;
+                container.appendChild(taskDiv);
+            });
+        }
+
+        // Action when user toggles a Prep task
+        function togglePrepTask(taskKey) {
+            const checkbox = document.getElementById(`prep-item-${taskKey}`);
+            const isChecked = checkbox.checked;
+            localStorage.setItem(`prep-${taskKey}`, isChecked);
+            
+            // Re-render current tasks to apply style updates smoothly
+            const data = weeklyPlan[activeDay];
+            renderPrepTasks(data.prepTasks);
+        }
+
+        // Render All Recipes inside explorer grid
+        function renderAllRecipes() {
+            const grid = document.getElementById('recipe-grid');
+            grid.innerHTML = '';
+
+            Object.values(recipes).forEach(recipe => {
+                const card = document.createElement('div');
+                card.id = `recipe-card-${recipe.id}`;
+                card.className = `recipe-card bg-zinc-950 border border-zinc-800 hover:border-zinc-700 rounded-2xl p-5 flex flex-col justify-between transition-all shadow-md group`;
+                card.setAttribute('data-category', recipe.category);
+
+                const isBreakfast = recipe.category === 'breakfast';
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${isBreakfast ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'}">
+                                ${recipe.category}
+                            </span>
+                            <span class="text-xs text-zinc-400 font-semibold flex items-center gap-1">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                ${recipe.time}
+                            </span>
+                        </div>
+                        <h4 class="text-lg font-extrabold text-white group-hover:text-emerald-400 transition-colors duration-150">${recipe.title}</h4>
+                        <p class="text-xs text-emerald-400 font-bold mt-1 mb-4 flex items-center gap-1">
+                            <span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
+                            ${recipe.protein} Protein
+                        </p>
+                        <div class="border-t border-zinc-900 pt-3 mb-4">
+                            <span class="text-[10px] text-zinc-500 uppercase font-semibold tracking-wider block mb-1">Key Ingredients</span>
+                            <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">${recipe.ingredients.slice(0, 3).join(', ')}...</p>
+                        </div>
+                    </div>
+                    <button onclick="viewRecipe('${recipe.id}')" class="w-full py-2.5 bg-zinc-900 group-hover:bg-emerald-500 group-hover:text-zinc-950 text-zinc-300 font-bold text-xs rounded-xl transition-all duration-200 border border-zinc-800 group-hover:border-emerald-500">
+                        Cook This Recipe
+                    </button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter recipes by categories
+        function filterRecipes(cat) {
+            // Update Active Buttons
+            document.querySelectorAll('.recipe-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-emerald-500', 'text-zinc-950');
+                btn.classList.add('bg-transparent', 'text-zinc-400', 'hover:text-white');
+            });
+            document.getElementById(`recipe-filter-${cat}`).classList.add('bg-emerald-500', 'text-zinc-950');
+            document.getElementById(`recipe-filter-${cat}`).classList.remove('hover:text-white');
+
+            // Apply card visibility changes
+            document.querySelectorAll('.recipe-card').forEach(card => {
+                if (cat === 'all' || card.getAttribute('data-category') === cat) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // Pantry Sub-Tab Switching System
+        function togglePantryTab(tab) {
+            activePantryTab = tab;
+            document.querySelectorAll('.pantry-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-emerald-500/10', 'text-emerald-400', 'border', 'border-emerald-500/20');
+                btn.classList.add('bg-transparent', 'text-zinc-400', 'hover:text-white');
+            });
+
+            document.getElementById(`tab-btn-${tab}`).classList.remove('hover:text-white');
+            document.getElementById(`tab-btn-${tab}`).classList.add('bg-emerald-500/10', 'text-emerald-400', 'border', 'border-emerald-500/20');
+
+            document.querySelectorAll('.pantry-content').forEach(elem => {
+                elem.classList.add('hidden');
+            });
+            document.getElementById(`pantry-${tab}-content`).classList.remove('hidden');
+        }
+
+        // Save states for checkboxes
+        function savePantryItem(elemId) {
+            const checked = document.getElementById(elemId).checked;
+            localStorage.setItem(elemId, checked);
+        }
+
+        // Load saved checklist states
+        function loadPantryState() {
+            const checks = ['chk-onion', 'chk-ginger-garlic', 'chk-turmeric', 'chk-coriander-seeds', 'chk-garam-masala', 'chk-chicken', 'chk-tilapia', 'chk-eggs', 'chk-soya', 'chk-pulses', 'chk-roti'];
+            checks.forEach(chkId => {
+                const storedVal = localStorage.getItem(chkId);
+                const elem = document.getElementById(chkId);
+                if (elem && storedVal !== null) {
+                    elem.checked = (storedVal === 'true');
+                }
+            });
+        }
+
+        // Reset All checks
+        function resetPantryChecklist() {
+            const checks = ['chk-onion', 'chk-ginger-garlic', 'chk-turmeric', 'chk-coriander-seeds', 'chk-garam-masala', 'chk-chicken', 'chk-tilapia', 'chk-eggs', 'chk-soya', 'chk-pulses', 'chk-roti'];
+            checks.forEach(chkId => {
+                localStorage.removeItem(chkId);
+                const elem = document.getElementById(chkId);
+                if (elem) elem.checked = false;
+            });
+        }
+
+        // Modal viewing actions
+        function viewRecipe(recipeId) {
+            const recipe = recipes[recipeId];
+            if (!recipe) return;
+
+            // Set modal values
+            document.getElementById('modal-recipe-cat').innerText = recipe.category;
+            document.getElementById('modal-recipe-cat').className = `px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${recipe.category === 'breakfast' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'}`;
+            document.getElementById('modal-recipe-title').innerText = recipe.title;
+            document.getElementById('modal-recipe-protein').innerText = `${recipe.protein} Protein | Cook Time: ${recipe.time}`;
+            document.getElementById('modal-recipe-tip').innerText = recipe.tip;
+
+            // Populate Ingredients list
+            const ingList = document.getElementById('modal-recipe-ingredients');
+            ingList.innerHTML = '';
+            recipe.ingredients.forEach(ing => {
+                const li = document.createElement('li');
+                li.className = 'flex items-center gap-2 p-2 bg-zinc-950/40 rounded-lg border border-zinc-800 text-zinc-300';
+                li.innerHTML = `
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
+                    <span>${ing}</span>
+                `;
+                ingList.appendChild(li);
+            });
+
+            // Populate Cooking Steps
+            const stepsList = document.getElementById('modal-recipe-steps');
+            stepsList.innerHTML = '';
+            recipe.steps.forEach((step, idx) => {
+                const li = document.createElement('li');
+                li.className = 'flex gap-3 items-start p-2 hover:bg-zinc-800/20 rounded-xl transition-all';
+                li.innerHTML = `
+                    <span class="w-6 h-6 flex items-center justify-center bg-zinc-800 border border-zinc-700 text-emerald-400 font-extrabold rounded-lg text-xs shrink-0">${idx + 1}</span>
+                    <p class="text-zinc-300 text-xs leading-relaxed pt-0.5">${step}</p>
+                `;
+                stepsList.appendChild(li);
+            });
+
+            // Show modal
+            document.getElementById('recipe-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // block scrolling background
+        }
+
+        // Helper trigger to translate Meal1 / Meal2 click indicators to specific active plans
+        function viewRecipeByMealId(mealSlot) {
+            const currentDayData = weeklyPlan[activeDay];
+            const targetId = (mealSlot === 'meal1') ? currentDayData.meal1Id : currentDayData.meal2Id;
+            viewRecipe(targetId);
+        }
+
+        function closeRecipeModal() {
+            document.getElementById('recipe-modal').classList.add('hidden');
+            document.body.style.overflow = ''; // restore scrolling
+        }
+    </script>
+</body>
+</html>
